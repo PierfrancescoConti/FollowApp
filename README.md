@@ -23,26 +23,6 @@ Things you may want to cover:
 
 * ...
 
-skip_before_action :authorize, only: [:new]
-
-<!--    <% if User.find_by(usname: session[:user_usname])[:friends].include?(@user.usname)  %>
-      <%= link_to 'Remove from friends', remove_friend(@user), class: 'btn btn-default' %>
-    <% else %>
-      <% if User.find(session[:user_id])==@user %>
-      <% else %>
-        <%=  link_to 'Add friend', add_friend(@user), class: 'btn btn-default' %>
-      <% end %>
-    <% end %>-->
-    <!-- ERRORE friends è nil e non un array -->
-    <!-- http://www.html.it/pag/17667/array-ii/ -->
-
-
-
-    <!--<%= @user.friends %>      <!-- you have to display in a box the people you are following  -->
-
-
-
-
-
+a breve autenticazione con facebook con
 Oauth:
       https://www.sitepoint.com/rails-authentication-oauth-2-0-omniauth/

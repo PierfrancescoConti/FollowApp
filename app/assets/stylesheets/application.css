@@ -1,0 +1,105 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+ .hidden{
+   position: absolute;
+   left: -9999px;
+ }
+
+
+
+ .box{
+   	width: 40%;
+   	height: 400px;
+   	border: 1px solid;
+    overflow: auto;
+}
+
+  .dropdown {
+    transition: max-height 0.8s ease-in-out;
+    flex-grow: 1;
+    position: relative;
+  }
+  .dropdown-content {
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-1em);
+    z-index: -1;
+    transition: all 0.3s ease-in-out 0s, visibility 0s linear   0.3s, z-index 0s linear 0.01s;
+    background-color: #363636;
+    min-width: 100%;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    position: absolute;
+  }
+  .dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    transition: background-color 0.5s ease-out;
+    text-align: center;
+  }
+  .dropdown-content a:hover {
+    background-color: gray;
+  }
+  .dropdown .dropbtn {
+    font-size: 16px;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    background-color: inherit;
+    width: 100%;
+    transition: background-color 0.3s ease-out;
+    position: relative;
+  }
+
+  .navbar a:hover, .dropdown:hover .dropbtn {
+    background-color: #003153;
+  }
+
+  .dropdown:hover .dropdown-content {
+    display: block;
+    visibility: visible;
+    opacity: 1;
+    z-index: 1;
+    transform: translateY(0%);
+    transition-delay: 0s, 0s, 0.3s;
+  }
+
+  .search-bar{
+    position: absolute;
+    left: 30%;
+    width: 70%;
+  }
+
+  .barra{
+    width: 50%;
+  }
+
+.search-button{
+  margin-left: 2px;
+  height: 30px;
+  width: 30px;
+  color: white;
+  border: 0px;
+  background-color: #003153;
+  background-image: url(http://linkendata.it/wp-content/uploads/2017/06/icon_search-e1496758160992.png);
+  background-size: 105%;
+  background-position: 0 -1px;
+}

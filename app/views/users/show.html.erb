@@ -1,0 +1,57 @@
+<div class='container' align='center'>
+  <p id="notice"><%= notice %></p>
+
+
+
+  <p>
+
+    <% if @user.image.thumb.url==nil %>
+      <%= image_tag 'Unknown.jpg', style: 'border_radius: 100% 100% 100% 100% 100%;' %>       <!-- aggiunta l'immagine a /assets/image/-->
+    <% else %>
+      <%= image_tag @user.image.thumb.url , style: 'border-radius: 100% 100% 100% 100%;' %>
+    <% end %>
+
+    <% if User.find(session[:user_id])!=@user && User.find(session[:user_id])[:friends].include?(@user.usname)%>
+      <%= form_tag action: 'remove_friend', controller: 'users' do %>
+          <%= submit_tag 'Remove friend', class: 'btn btn-default', style: 'background-color: red; margin-left: 10px; color: white;'%> <%= text_field_tag :usname, nil, class: 'hidden', value: @user.usname %>  <!-- CERCA UTENTI -->
+      <% end %>
+
+    <% else %>
+      <% if User.find(session[:user_id])!=@user %>
+        <%= form_tag action: 'add_friend', controller: 'users' do %>
+          <%= submit_tag 'Add friend', class: 'btn btn-default' %> <%= text_field_tag :usname, nil, class: 'hidden', value: @user.usname %>  <!-- CERCA UTENTI -->
+        <% end %>
+      <% end %>
+    <% end %>
+
+
+</p>
+
+<p>
+  <strong>Usname:</strong>
+  <%= @user.usname %>
+</p>
+
+<p>
+  <strong>Friends:</strong>
+  <div class='box'>
+
+    <% @user[:friends].each do |element| %>
+    <h3 style="margin-top: 3px;">
+      <td><%= form_tag action: 'remove_friend', controller: 'users' do %>
+        <%= element %><%= link_to 'Show', User.find_by(:usname => element), class: 'btn btn-default', style: 'background-color: blue; margin-left: 10px; color: white;'%>
+          <% if User.find(session[:user_id])==@user %>
+
+            <%= submit_tag 'Remove', class: 'btn btn-default', style: 'background-color: red; margin-left: 10px; color: white;'%> <%= text_field_tag :usname, nil, class: 'hidden', value: element %>  <!-- CERCA UTENTI -->
+        <% end %>
+      <% end %>
+    </td>
+    </h3>
+    <% end %>
+  </div>
+</p>
+  <% if User.find(session[:user_id])==@user %>
+    <%= link_to 'Edit', edit_user_path(@user) %> |
+    <%= link_to 'Back', users_path %>
+  <% end %>
+</div>

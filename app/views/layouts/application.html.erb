@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>FollowApp</title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css' %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body style='background-color: #99CBFF;'>
+
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+          <%= link_to "FollowApp",  home_path , :class => "navbar-brand" %>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="nav navbar-nav">
+            <li>
+              <%= link_to "Profile", if session[:user_id]; user_url(session[:user_id]); end , :class => 'btn btn-default', :style => 'color: gray' %> <!-- user_url(session[:user_id]) -->
+            </li>
+          </ul>
+        </div>
+
+
+      <!-- barra di ricerca -->
+      <div class="search-bar">
+
+      <%= form_tag action: 'search', controller: 'users' do %>  <!-- PERCHÈ DÀ ERRORE????????? -->
+      <%= text_field_tag :usname, nil, class: 'barra', placeholder: 'Search Your Friends...' %> <%= submit_tag "", class: 'search-button' %> <!-- CERCA UTENTI -->
+      <% end %>
+
+    </div>
+
+        <div class="collapse navbar-collapse" id="navbarCollapse" style="position: absolute; right: 10px; bottom: 2px;">
+          <div class="dropdown"> <!--TEAM-->
+  			  	 <li>
+              <%= link_to "=", '#', :class => 'btn btn-default dropbtn link', :style => 'color: gray' %>
+              <!--sessions_destroy_path-->
+            </li>
+  				    <div class="dropdown-content">
+                <%= link_to "Login", login_url %>
+                <%= link_to "Logout", sessions_destroy_path %>
+                <%= link_to "Help", help_path %>
+  				    </div>
+
+
+
+        </div>
+
+    </nav>
+    <div style= 'margin-top: 50px;'>
+      <%= yield %>
+    </div>
+  </body>
+</html>
