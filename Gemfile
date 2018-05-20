@@ -40,6 +40,7 @@ group :development, :test do
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
   gem 'carrierwave', '~> 1.0'
+  gem 'fog', '~> 1.0.0' 
   gem 'mini_magick', '~> 4.3'
   gem 'omniauth-facebook'
 end

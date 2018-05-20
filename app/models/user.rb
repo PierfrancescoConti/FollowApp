@@ -14,6 +14,15 @@ class User < ApplicationRecord
  validates :password,
   :confirmation => true,
   :length => { :minimum => 8},
-  :with => /^(?=.\d)(?=.([a-z]|[A-Z]))([\x20-\x7E])$/,
   :if => lambda{ new_record? || !password.nil? }
+
+  validate :password_complexity
+
+  def password_complexity
+    if password.present?
+       if !password.match(/^(?=.*[a-zA-Z])(?=.*[0-9])/) 
+         errors.add :password, "Password complexity requirement not met"
+       end
+    end
+  end
 end
